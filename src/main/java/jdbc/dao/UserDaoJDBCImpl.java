@@ -1,25 +1,17 @@
 package jdbc.dao;
 
 import jdbc.model.User;
-import jdbc.util.Util;
-
+import jdbc.util.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+
 
 public class UserDaoJDBCImpl implements UserDao {
-    private static final Connection conn;
-
-    static {
-        try {
-            conn = Util.getConnection();
-        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private final Connection conn;
 
     public UserDaoJDBCImpl() {
-
+        this.conn = Util.getConnection();
     }
 
     public void createUsersTable() {
